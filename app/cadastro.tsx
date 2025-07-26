@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 40,
         borderColor: '#ccc',
+        backgroundColor: '#fff',
         borderWidth: 1,
+        borderRadius: 10,
     }
 });

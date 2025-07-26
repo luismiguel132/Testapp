@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "SaasApp",
-    "slug": "SaasApp",
+    "name": "APP",
+    "slug": "APP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "saasapp",
+    "scheme": "APP",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
@@ -22,7 +22,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.luismig125.SaasApp"
+      "package": "com.luismig125.APP"
     },
     "web": {
       "bundler": "metro",

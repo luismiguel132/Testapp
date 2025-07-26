@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Button_bac} from '../components/buttom_bac/buttom'
 import { Button } from '../components/buttom/buttom'
 import {router } from "expo-router"
+import Animated from 'react-native-reanimated';
 
 export default function Index() {  // Mudei de 'app' para 'Index'
 
@@ -29,7 +30,7 @@ export default function Index() {  // Mudei de 'app' para 'Index'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#E2E9E6',
+        backgroundColor: '#d0e5dcff',
         alignItems: 'center',
         justifyContent: 'center',
         gap: 25,
