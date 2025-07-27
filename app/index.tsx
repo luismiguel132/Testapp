@@ -30,7 +30,7 @@ export default function Index() {  // Mudei de 'app' para 'Index'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#d0e5dcff',
+        backgroundColor: '#E2E9E6',
         alignItems: 'center',
         justifyContent: 'center',
         gap: 25,

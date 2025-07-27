@@ -10,6 +10,9 @@ export default function Login() {
         router.back();
     }
 
+    function hendleRegister () {
+        router.navigate("/home");
+    }
 
     return (
         <View style={styles.container}>
@@ -18,8 +21,8 @@ export default function Login() {
             <TextInput style={styles.input} placeholder='Email' keyboardType='email-address' />
             <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true} />
             <TextInput style={styles.input} placeholder='Confirmar Senha' secureTextEntry={true} />
-            <Button title='cadastrar'  />
-            <Button_bac title='Voltar' onPress={goBack} />
+            <Button_bac title='cadastrar' onPress={hendleRegister} />
+            <Button title='Voltar' onPress={goBack} />
         </View>
     );
 }
@@ -33,18 +36,21 @@ const styles = StyleSheet.create({
         gap: 25,
     },
     title: {
-        color: '#002619',
+        color: '#002b1cff',
         fontSize: 24,
         marginBottom: 30,
         width: "100%",
         textAlign: 'center',
+        fontWeight: '700',
     },
     input: {
         width: '80%',
-        height: 40,
+        height: 44,
         borderColor: '#ccc',
         backgroundColor: '#fff',
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 8,
+        fontWeight: '900',
+        
     }
 });

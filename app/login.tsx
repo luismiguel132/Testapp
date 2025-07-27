@@ -10,6 +10,9 @@ export default function Login() {
         router.back();
     }
 
+    function hendleLogin () {
+        router.navigate("/home");
+    }
 
     return (
         <View style={styles.container}>
@@ -17,8 +20,8 @@ export default function Login() {
             
             <TextInput style={styles.input} placeholder='Email' keyboardType='email-address' />
             <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true} />
-            <Button title='Entrar'  />
-            <Button_bac title='Voltar' onPress={goBack} />
+            <Button_bac title='Entrar' onPress={hendleLogin} />
+            <Button title='Voltar' onPress={goBack} />
         </View>
     );
 }
@@ -40,10 +43,12 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '80%',
-        height: 40,
+        height: 44,
         borderColor: '#ccc',
         backgroundColor: '#fff',
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 8,
+        fontWeight: '900',
+
     }
 });
