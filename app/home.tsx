@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import { getMovies, searchMovies } from '@/services/tmdb';
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/navbar';
+import HamburgerMenu from '../components/hanburgerMenu/menu';
 
 interface Movie {
     id: number;
@@ -60,6 +61,16 @@ export default function home() {
         loadMovies();
     };
 
+    const handleProfilePress = () => {
+        Alert.alert('Perfil', 'Navegar para tela de perfil');
+        // router.navigate("/profile");
+    };
+
+    const handleSettingsPress = () => {
+        Alert.alert('Configurações', 'Navegar para tela de configurações');
+        // router.navigate("/settings");
+    };
+
     const renderMovie = ({ item }: { item: Movie }) => (
         <View style={styles.movieCard}>
             <Image
@@ -92,7 +103,14 @@ export default function home() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Search Flix</Text>
+            <View style={styles.header}>
+                <Text style={styles.title}>Search Flix</Text>
+                <HamburgerMenu 
+                    onProfilePress={handleProfilePress}
+                    onSettingsPress={handleSettingsPress}
+                />
+            </View>
+            
             <Text style={styles.subtitle}>
                 {searchQuery ? `Resultados para: "${searchQuery}"` : 'Filmes'}
             </Text>
@@ -133,12 +151,19 @@ const styles = StyleSheet.create({
         paddingTop: 60,
         paddingLeft: 10,
     },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        marginBottom: 10,
+    },
     title: {
         color: '#002619',
         fontSize: 32,
         fontWeight: 'bold',
+        flex: 1,
         textAlign: 'center',
-        marginBottom: 10,
     },
     subtitle: {
         color: '#002619',
