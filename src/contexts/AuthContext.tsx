@@ -1,5 +1,5 @@
 import { User } from "@supabase/supabase-js";
-import { Children, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface AuthContextProps{
     user: User | null;
@@ -8,7 +8,7 @@ interface AuthContextProps{
 
 const AuthContext = createContext({} as AuthContextProps)
 
-export const AuthProvider = ({ Children }: { Children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null)
 
     function setAuth(authUser: User | null) {
@@ -16,8 +16,8 @@ export const AuthProvider = ({ Children }: { Children: React.ReactNode }) => {
     }
 
     return(
-        <AuthContext.Provider value={{ user,setAuth }}>
-            {Children}
+        <AuthContext.Provider value={{ user, setAuth }}>
+            {children}
         </AuthContext.Provider>
     )
 }

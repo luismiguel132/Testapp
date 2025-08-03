@@ -6,10 +6,15 @@ import {
     Modal,
     Animated,
     Easing,
+    StyleSheet,
+    Alert
 } from 'react-native';
 //@ts-ignore
 import Feather from 'react-native-vector-icons/Feather';
 import { styles } from './styles';
+import { Button_bac } from '../buttom_bac/buttom';
+import { supabase } from '@/src/lib/supabase';
+import {useAuth} from '../../contexts/AuthContext'
 
 interface HamburgerMenuProps {
     onProfilePress?: () => void;
@@ -23,6 +28,8 @@ export default function HamburgerMenu({
     const [isVisible, setIsVisible] = useState(false);
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const slideAnim = useRef(new Animated.Value(250)).current; // Começa fora da tela pela direita
+    const { setAuth } = useAuth();
+
 
     const openMenu = () => {
         setIsVisible(true);
@@ -68,6 +75,16 @@ export default function HamburgerMenu({
         closeMenu();
         onSettingsPress?.();
     };
+
+
+    async function hendleSignout() {
+        const { error } = await supabase.auth.signOut()
+        setAuth(null)
+        if(error) {
+            Alert.alert('Error', 'errro aou deslogar')
+            return;
+        }
+    }
 
     return (
         <>
@@ -128,6 +145,8 @@ export default function HamburgerMenu({
                                 <Feather name="settings" size={22} color="#002619" />
                                 <Text style={styles.menuText}>Configurações</Text>
                             </TouchableOpacity>
+
+                            <Button_bac title='sair' onPress={hendleSignout}/>
                         </View>
                     </Animated.View>
                 </Animated.View>

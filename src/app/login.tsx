@@ -13,7 +13,7 @@ export default function Login() {
         const [loading, setLoading] = useState(false);
 
     const goBack = () => {
-        router.back();
+        router.replace("/");
     }
 
     async function hendleLogin () {
