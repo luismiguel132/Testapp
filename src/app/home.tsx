@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, FlatList, Image, ActivityIndicator, Alert } from 'react-native';
-import { router } from "expo-router";
 import { getMovies, searchMovies } from '@/src/services/tmdb';
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/navbar';
