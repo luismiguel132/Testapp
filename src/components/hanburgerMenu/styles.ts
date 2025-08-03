@@ -2,8 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     hamburgerButton: {
-        padding: 8,
-        borderRadius: 4,
+        padding: 12,
+        borderRadius: 30,
+        backgroundColor: 'rgba(224, 242, 241, 0.8)', // leve tom de verde claro
     },
     overlay: {
         flex: 1,
@@ -19,47 +20,46 @@ export const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         width: 250,
         height: '100%',
-        paddingTop: 20,
+        paddingTop: 30,
         paddingHorizontal: 20,
         shadowColor: '#000',
-        shadowOffset: {
-            width: -2,
-            height: 0,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        shadowOffset: { width: -2, height: 0 },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        elevation: 10,
     },
     closeButton: {
         alignSelf: 'flex-end',
-        marginBottom: 20,
+        padding: 8,
     },
     menuContent: {
         flex: 1,
+        marginTop: 20,
     },
     menuItem: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 20,
+        paddingVertical: 16,
         paddingHorizontal: 10,
         borderRadius: 8,
+        backgroundColor: '#F7F7F7',
+        marginBottom: 10,
     },
     iconContainer: {
         width: 32,
         height: 32,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 15,
+        marginRight: 12, // ainda pode usar marginRight se não usar gap
     },
     menuText: {
-        fontSize: 18,
+        fontSize: 16,
         color: '#002619',
         fontWeight: '500',
     },
     separator: {
         height: 1,
-        backgroundColor: '#E0E0E0',
-        marginHorizontal: 10,
-        marginVertical: 5,
+        backgroundColor: '#DADADA',
+        marginVertical: 8,
     },
 });

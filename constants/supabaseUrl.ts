@@ -1,0 +1,3 @@
+export const supaUrl =  'https://kxebtkvftgxenvsucnhw.supabase.co'
+
+export const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4ZWJ0a3ZmdGd4ZW52c3Vjbmh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQyMjc4MjgsImV4cCI6MjA2OTgwMzgyOH0.c1Cjkkq4GJqOpR62GHDIS-I7EUD7-LdOnmHxaBx5DiE'

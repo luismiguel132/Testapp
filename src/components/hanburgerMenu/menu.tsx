@@ -1,7 +1,14 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native';
-// @ts-ignore
-import Icon from 'react-native-vector-icons/Feather';
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    Modal,
+    Animated,
+    Easing,
+} from 'react-native';
+//@ts-ignore
+import Feather from 'react-native-vector-icons/Feather';
 import { styles } from './styles';
 
 interface HamburgerMenuProps {
@@ -9,24 +16,29 @@ interface HamburgerMenuProps {
     onSettingsPress?: () => void;
 }
 
-export default function HamburgerMenu({ onProfilePress, onSettingsPress }: HamburgerMenuProps) {
+export default function HamburgerMenu({
+    onProfilePress,
+    onSettingsPress,
+}: HamburgerMenuProps) {
     const [isVisible, setIsVisible] = useState(false);
     const fadeAnim = useRef(new Animated.Value(0)).current;
-    const slideAnim = useRef(new Animated.Value(-250)).current;
+    const slideAnim = useRef(new Animated.Value(250)).current; // Começa fora da tela pela direita
 
     const openMenu = () => {
         setIsVisible(true);
         Animated.parallel([
             Animated.timing(fadeAnim, {
                 toValue: 1,
-                duration: 300,
+                duration: 500,
+                easing: Easing.out(Easing.ease),
                 useNativeDriver: true,
             }),
             Animated.timing(slideAnim, {
                 toValue: 0,
-                duration: 300,
+                duration: 500,
+                easing: Easing.out(Easing.ease),
                 useNativeDriver: true,
-            })
+            }),
         ]).start();
     };
 
@@ -38,10 +50,10 @@ export default function HamburgerMenu({ onProfilePress, onSettingsPress }: Hambu
                 useNativeDriver: true,
             }),
             Animated.timing(slideAnim, {
-                toValue: -250,
-                duration: 300,
+                toValue: 250,
+                duration: 400,
                 useNativeDriver: true,
-            })
+            }),
         ]).start(() => {
             setIsVisible(false);
         });
@@ -59,69 +71,61 @@ export default function HamburgerMenu({ onProfilePress, onSettingsPress }: Hambu
 
     return (
         <>
-            {/* Botão do menu hamburger */}
-            <TouchableOpacity 
-                style={styles.hamburgerButton} 
+            <TouchableOpacity
+                style={styles.hamburgerButton}
                 onPress={openMenu}
                 activeOpacity={0.7}
+                accessibilityLabel="Abrir menu"
+                disabled={isVisible}
             >
-                <Icon name="menu" size={26} color="#002619" />
+                <Feather name="menu" size={26} color="#002619" />
             </TouchableOpacity>
 
-            {/* Modal do menu */}
             <Modal
                 visible={isVisible}
-                transparent={true}
+                transparent
                 animationType="none"
                 onRequestClose={closeMenu}
             >
-                <Animated.View 
-                    style={[
-                        styles.overlay,
-                        { opacity: fadeAnim }
-                    ]}
-                >
-                    <TouchableOpacity 
-                        style={styles.overlayTouchable} 
-                        activeOpacity={1} 
+                <Animated.View style={[styles.overlay, { opacity: fadeAnim }]}>
+                    <TouchableOpacity
+                        style={styles.overlayTouchable}
+                        activeOpacity={1}
                         onPress={closeMenu}
                     />
-                    
-                    <Animated.View 
+
+                    <Animated.View
                         style={[
-                            styles.menuContainer, 
-                            { transform: [{ translateX: slideAnim }] }
+                            styles.menuContainer,
+                            { transform: [{ translateX: slideAnim }] },
                         ]}
                     >
-                        <TouchableOpacity 
-                            style={styles.closeButton} 
+                        <TouchableOpacity
+                            style={styles.closeButton}
                             onPress={closeMenu}
+                            accessibilityLabel="Fechar menu"
                         >
-                            <Icon name="x" size={26} color="#666" />
+                            <Feather name="x" size={26} color="#666" />
                         </TouchableOpacity>
 
                         <View style={styles.menuContent}>
-                            <TouchableOpacity 
-                                style={styles.menuItem} 
+                            <TouchableOpacity
+                                style={styles.menuItem}
                                 onPress={handleProfilePress}
                                 activeOpacity={0.7}
                             >
-                                <View style={styles.iconContainer}>
-                                    <Icon name="user" size={22} color="#002619" />
-                                </View>
+                                <Feather name="user" size={22} color="#002619" />
                                 <Text style={styles.menuText}>Perfil</Text>
                             </TouchableOpacity>
 
                             <View style={styles.separator} />
 
-                            <TouchableOpacity 
-                                style={styles.menuItem} 
+                            <TouchableOpacity
+                                style={styles.menuItem}
                                 onPress={handleSettingsPress}
                                 activeOpacity={0.7}
                             >
-                                <View style={styles.iconContainer}>
-                                    <Icon name="settings" size={22} color="#002619" />
-                                </View>
+                                <Feather name="settings" size={22} color="#002619" />
                                 <Text style={styles.menuText}>Configurações</Text>
                             </TouchableOpacity>
                         </View>
@@ -131,4 +135,3 @@ export default function HamburgerMenu({ onProfilePress, onSettingsPress }: Hambu
         </>
     );
 }
-
