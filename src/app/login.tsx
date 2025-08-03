@@ -39,7 +39,7 @@ export default function Login() {
             
             <TextInput style={styles.input} placeholder='Email' value={email} onChangeText={setemail} />
             <TextInput style={styles.input} placeholder='Senha' secureTextEntry={true} value={password} onChangeText={setpassword} />
-            <Button_bac title='Entrar' onPress={hendleLogin} />
+            <Button_bac title={loading? 'carregando...' : 'entrar' } onPress={hendleLogin} />
             <Button title='Voltar' onPress={goBack} />
         </View>
     );
